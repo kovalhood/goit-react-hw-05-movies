@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import Wrapper from "components/Wrapper";
 import Section from "components/Section";
+import AppBar from 'components/AppBar';
 import HomePage from 'components/HomePage';
 import MoviesPage from 'components/MoviesPage';
+import NotFoundView from 'views/NotFoundView';
 import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Routes, Route } from 'react-router-dom';
 // import styles from './services/styles'
 
 
@@ -14,8 +17,14 @@ function App() {
     return (
         <Wrapper>
             <Section>
-                <HomePage />
-                <MoviesPage/>
+                <AppBar />
+                
+                <Routes>
+                    <Route path='/' element={<HomePage/>}/>
+                    <Route path='/movies' element={<MoviesPage />} />
+                    <Route path='*'element={<NotFoundView/>}/>
+                </Routes>
+                
             </Section>
 
             {/* Notifications */}

@@ -1,0 +1,19 @@
+.link{
+    color: black;
+    font-size: 18px;
+}
+
+.link:hover{
+    color: red;
+    text-decoration: none;
+}
+
+.link__active{
+    color: red;
+    font-size: 18px;
+}
+
+.link__active:hover {
+    color: red;
+    text-decoration: none;
+}
