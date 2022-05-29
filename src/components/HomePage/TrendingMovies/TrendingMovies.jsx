@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import TrendingMoviesItem from 'components/HomePage/TrendingMoviesItem';
-import { fetchTrendingMovies } from 'services/trending-movies-api';
+import { fetchTrendingMovies, fetchMovieReviews } from 'services/movies-api';
 import PropTypes from 'prop-types';
 import s from './TrendingMovies.module.css';
 
@@ -13,7 +13,6 @@ export default function TrendingMovies() {
                 console.log(data);
                 setMovies(data.results);
             });
-            // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return <ul className={s.gallery}>
