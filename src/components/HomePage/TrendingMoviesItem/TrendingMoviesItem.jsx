@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import s from './TrendingMoviesItem.module.css';
 
-export default function TrendingMoviesItem({data}) {
+export default function TrendingMoviesItem({ data }) {
 
-    return (
+  return (
     data.map(({ title, id }) => (
-        <li className={s.item} key={id}>
-            <a href='' className={s.link}>{title}</a>
-        </li>
+      <li className={s.item} key={id}>
+        <Link to={`/movies/${id}`} className={s.link}>{title}</Link>
+      </li>
     ))
-    )
+  )
 }
 
 TrendingMoviesItem.propTypes = {

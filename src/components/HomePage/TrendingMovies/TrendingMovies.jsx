@@ -9,8 +9,7 @@ export default function TrendingMovies() {
     
     useEffect(() => {
         fetchTrendingMovies()
-            .then(data => {            
-                console.log(data);
+            .then(data => {
                 setMovies(data.results);
             });
     }, [])

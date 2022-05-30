@@ -4,7 +4,10 @@ import Section from "components/Section";
 import AppBar from 'components/AppBar';
 import HomePage from 'components/HomePage';
 import MoviesPage from 'components/MoviesPage';
-import NotFoundView from 'views/NotFoundView';
+import MovieDetailsPage from 'components/MovieDetailsPage';
+import Cast from 'components/MovieDetailsPage/Cast';
+import Reviews from 'components/MovieDetailsPage/Reviews';
+// import NotFoundView from 'views/NotFoundView';
 import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,10 +24,13 @@ function App() {
                 
                 <Routes>
                     <Route path='/' element={<HomePage/>}/>
-                    <Route path='/movies' element={<MoviesPage />} />
-                    <Route path='*'element={<NotFoundView/>}/>
+                    <Route path='/movies' element={<MoviesPage />}/>
+                    <Route path='/movies/:movieId' element={<MovieDetailsPage />}>
+                        <Route path='/movies/:movieId/cast' element={<Cast/>}/>
+                        <Route path='/movies/:movieId/reviews' element={<Reviews/>} />
+                    </Route>
+                    {/* <Route path='*'element={<HomePage/>}/> */}
                 </Routes>
-                
             </Section>
 
             {/* Notifications */}

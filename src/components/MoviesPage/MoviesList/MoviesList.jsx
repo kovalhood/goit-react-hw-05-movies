@@ -9,21 +9,10 @@ function MoviesList({searchQuery}) {
     const [page, setPage] = useState(1);
     const [movies, setMovies] = useState([]);
 
-    // const handleLoadMore = () => {
-    //     setPage(prevState => prevState + 1);
-    // }
-
     useEffect(() => {
         if (searchQuery === '') {
             return;
         }
-        
-        // if (query !== searchQuery && page > 1) {
-        //     setImages([]);
-        //     setPage(1);
-        //     setTotalHits(1);
-        //     return;
-        // }
 
         fetchMovies(searchQuery)
             .then(data => {
@@ -33,11 +22,6 @@ function MoviesList({searchQuery}) {
                         setMovies(data.results);
                         return toast.success(`Hooray! We found ${searchQuery}.`);
                     }
-
-                    
-                    // if (page > 1) {
-                    //     setMovies(prevState => [...prevState, ...data.results]);
-                    // }
                 }
                 
                 else {
