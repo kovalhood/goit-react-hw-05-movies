@@ -8,8 +8,17 @@ import s from './MovieDetailsPage.module.css';
 export default function MovieDetailsPage() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState('');
+    const [pageIndex, setPageIndex] = useState(null);
 
     const navigate = useNavigate();
+
+    // Setting page index for Go back button
+    useEffect(() => {
+        // Setting page index only if we visited previous pages in current session
+        if (window.history.state.idx > 0) {
+            setPageIndex(window.history.state.idx-1)
+        }
+    },[])
 
     useEffect(() => {
         fetchMovieDetails(movieId)
@@ -39,17 +48,23 @@ export default function MovieDetailsPage() {
     }
 
     function goBackHandle() {
-        if (window.history.state && window.history.state.idx > 0) {
-            navigate(-1);
-        }
-        
-        else {
+        if (pageIndex === null) {
+            //Go back functionality for first load of page from address bar
             navigate('/', { replace: true });
+            return;
+        }
+
+        if (window.history.state && window.history.state.idx > 0) {
+            // On description page if we click on Cast or Reviews we 
+            // are changing history index, so for proper Go back button functionality 
+            // we have to count difference between current history index 
+            // and history index on page mount
+            navigate(-`${window.history.state.idx-pageIndex}`);
         }
     }
-    
+
     return <>
-        <button onClick={ () => goBackHandle() }>Go back</button>
+        <button onClick={ goBackHandle }>Go back</button>
         {movie &&
             <div className={s.details}>
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.original_title} className={s.image}/>
