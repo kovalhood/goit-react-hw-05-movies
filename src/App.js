@@ -1,29 +1,31 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
+import { Routes, Route } from 'react-router-dom';
 import Wrapper from "components/Wrapper";
 import Section from "components/Section";
 import AppBar from 'components/AppBar';
-import HomePage from 'components/HomePage';
-import MoviesPage from 'components/MoviesPage';
-import MovieDetailsPage from 'components/MovieDetailsPage';
-import Cast from 'components/MovieDetailsPage/Cast';
-import Reviews from 'components/MovieDetailsPage/Reviews';
 import { ToastContainer } from 'react-toastify';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Routes, Route } from 'react-router-dom';
+import BeatLoader from "react-spinners/BeatLoader";
+
+const HomePage = lazy(() => import('components/HomePage' /* webpackChunkName: "home-page" */))
+const MoviesPage = lazy(() => import('components/MoviesPage' /* webpackChunkName: "movies-page" */))
+const MovieDetailsPage = lazy(() => import('components/MovieDetailsPage' /* webpackChunkName: "movie-details-page" */))
+const Cast = lazy(() => import('components/MovieDetailsPage/Cast' /* webpackChunkName: "cast" */))
+const Reviews = lazy(()=>import('components/MovieDetailsPage/Reviews' /* webpackChunkName: "reviews" */))
 
 export default function App() {
     return (
         <Wrapper>
             <Section>
                 <AppBar />
-                
+
                 <Routes>
-                    <Route path='/' element={<HomePage />} />
-                    <Route path='/movies' element={<MoviesPage />}/>
-                    <Route path='/movies/:movieId' element={<MovieDetailsPage />}>
-                        <Route path='/movies/:movieId/cast' element={<Cast/>}/>
-                        <Route path='/movies/:movieId/reviews' element={<Reviews/>} />
+                    <Route path='/' element={<Suspense fallback={<BeatLoader/>}><HomePage /></Suspense>} />
+                    <Route path='/movies' element={<Suspense fallback={<BeatLoader/>}><MoviesPage /></Suspense>}/>
+                    <Route path='/movies/:movieId' element={<Suspense fallback={<BeatLoader/>}><MovieDetailsPage /></Suspense>}>
+                        <Route path='/movies/:movieId/cast' element={<Suspense fallback={<BeatLoader/>}><Cast/></Suspense>}/>
+                        <Route path='/movies/:movieId/reviews' element={<Suspense fallback={<BeatLoader/>}><Reviews/></Suspense>} />
                     </Route>
                     <Route path='*'element={<HomePage/>}/>
                 </Routes>
