@@ -25,6 +25,7 @@ export default function MovieDetailsPage() {
             .then(data => {
                 normalizedData(data);
                 setMovie(data);
+                console.log(data)
             })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movieId])
@@ -70,7 +71,10 @@ export default function MovieDetailsPage() {
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.original_title} className={s.image}/>
                 <div>
                     <h1>{movie.original_title}</h1>
+                    <p>{movie.tagline}</p>
                     <p>User Score: {movie.vote_average * 10}%</p>
+                    <h2>Release</h2>
+                    <p>{parseInt(movie.release_date)}</p>
                     <h2>Overview</h2>
                     <p>{movie.overview}</p>
                     <h2>Genres</h2>
