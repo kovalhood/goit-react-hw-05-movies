@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import TrendingMoviesItem from 'components/HomePage/TrendingMoviesItem';
-import { fetchTrendingMovies, fetchMovieReviews } from 'services/movies-api';
-import PropTypes from 'prop-types';
+import MoviesListItem from '../../MoviesListItem';
+import { fetchTrendingMovies } from 'services/movies-api';
 import s from './TrendingMovies.module.css';
 
 export default function TrendingMovies() {
@@ -15,10 +14,6 @@ export default function TrendingMovies() {
     }, [])
 
     return <ul className={s.gallery}>
-        <TrendingMoviesItem data={movies} />
+        <MoviesListItem data={movies} />
     </ul>
 }
-
-// TrendingMovies.propTypes = {
-//     text: PropTypes.string.isRequired,
-// }
