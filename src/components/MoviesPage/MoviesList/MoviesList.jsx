@@ -18,7 +18,6 @@ function MoviesList({searchQuery}) {
             .then(data => {
                 if (data.total_results > 0) {
                     if (page === 1) {
-                        console.log(data);
                         setMovies(data.results);
                         return toast.success(`Hooray! We found ${searchQuery}.`);
                     }

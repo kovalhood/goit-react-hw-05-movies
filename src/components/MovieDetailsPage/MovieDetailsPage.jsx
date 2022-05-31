@@ -1,16 +1,15 @@
-import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import { useParams, Outlet } from 'react-router-dom';
-import { fetchMovieDetails, fetchMovieCredits, fetchMovieReviews } from 'services/movies-api';
+import { useParams, Outlet, useNavigate } from 'react-router-dom';
+import { fetchMovieDetails } from 'services/movies-api';
 import { genresNames } from 'services/genres-names';
 import { Link } from 'react-router-dom';
-import Cast from './Cast';
-import Reviews from './Reviews';
 import s from './MovieDetailsPage.module.css';
 
 export default function MovieDetailsPage() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState('');
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchMovieDetails(movieId)
@@ -18,6 +17,7 @@ export default function MovieDetailsPage() {
                 normalizedData(data);
                 setMovie(data);
             })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movieId])
 
     function normalizedData(results) {
@@ -37,8 +37,19 @@ export default function MovieDetailsPage() {
             return arrayOfGenres;
         });
     }
+
+    function goBackHandle() {
+        if (window.history.state && window.history.state.idx > 0) {
+            navigate(-1);
+        }
+        
+        else {
+            navigate('/', { replace: true });
+        }
+    }
     
     return <>
+        <button onClick={ () => goBackHandle() }>Go back</button>
         {movie &&
             <div className={s.details}>
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.original_title} className={s.image}/>
@@ -67,12 +78,3 @@ export default function MovieDetailsPage() {
         <Outlet/>
     </>
 }
-
-// MovieDetailsPage.propTypes = {
-//   data: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       title: PropTypes.string.isRequired,
-//     })
-//   ),
-// };
