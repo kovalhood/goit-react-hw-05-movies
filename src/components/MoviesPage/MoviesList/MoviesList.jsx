@@ -5,7 +5,7 @@ import MoviesListItem from '../../MoviesListItem';
 import s from './MoviesList.module.css';
 import { toast } from 'react-toastify';
 
-function MoviesList({searchQuery}) {
+export default function MoviesList({searchQuery}) {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
@@ -30,8 +30,6 @@ function MoviesList({searchQuery}) {
         <MoviesListItem data={ movies }/>
     </ul>
 }
-
-export default MoviesList;
 
 MoviesList.propTypes = {
     searchQuery: PropTypes.string,

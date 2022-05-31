@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { lazy } from "react";
 import Wrapper from "components/Wrapper";
 import Section from "components/Section";
 import AppBar from 'components/AppBar';
@@ -7,16 +7,12 @@ import MoviesPage from 'components/MoviesPage';
 import MovieDetailsPage from 'components/MovieDetailsPage';
 import Cast from 'components/MovieDetailsPage/Cast';
 import Reviews from 'components/MovieDetailsPage/Reviews';
-// import NotFoundView from 'views/NotFoundView';
 import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
-// import styles from './services/styles'
 
-
-function App() {
-
+export default function App() {
     return (
         <Wrapper>
             <Section>
@@ -38,5 +34,3 @@ function App() {
         </Wrapper>
     )
 }
-
-export default App;
