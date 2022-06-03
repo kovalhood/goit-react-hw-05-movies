@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import Container from 'components/Container';
 import SearchField from './SearchField';
-import MoviesList from './MoviesList';
+import MoviesSearchList from './MoviesSearchList';
 import { toast } from 'react-toastify';
 import s from './MoviesPage.module.css';
 
@@ -31,8 +32,8 @@ export default function MoviesPage() {
         }
     }, [query])
 
-    return <div>
+    return <Container>
         <SearchField onSubmit={handleSubmit}/>
-        <MoviesList searchQuery={ searchQuery }/>
-    </div>
+        <MoviesSearchList searchQuery={ searchQuery }/>
+    </Container>
 }

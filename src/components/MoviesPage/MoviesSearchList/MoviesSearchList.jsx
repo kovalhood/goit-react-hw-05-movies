@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { fetchMovies } from 'services/movies-api';
+import MoviesList from 'components/MoviesList';
 import MoviesListItem from '../../MoviesListItem';
-import s from './MoviesList.module.css';
+import normalizedData from 'services/normalized-data';
+import s from './MoviesSearchList.module.css';
 import { toast } from 'react-toastify';
 
-export default function MoviesList({searchQuery}) {
+export default function MoviesSearchList({searchQuery}) {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
@@ -16,7 +18,7 @@ export default function MoviesList({searchQuery}) {
         fetchMovies(searchQuery)
             .then(data => {
                 if (data.total_results > 0) {
-                    setMovies(data.results);
+                    setMovies(normalizedData(data.results));
                 }
 
                 else {
@@ -25,12 +27,14 @@ export default function MoviesList({searchQuery}) {
                 }
             });
     }, [searchQuery])
+
+
         
-    return <ul className={s.gallery}>
+    return <MoviesList>
         <MoviesListItem data={ movies }/>
-    </ul>
+    </MoviesList>
 }
 
-MoviesList.propTypes = {
+MoviesSearchList.propTypes = {
     searchQuery: PropTypes.string,
 }

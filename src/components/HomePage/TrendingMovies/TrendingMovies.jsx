@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+import MoviesList from 'components/MoviesList';
 import MoviesListItem from '../../MoviesListItem';
+import normalizedData from 'services/normalized-data';
 import { fetchTrendingMovies } from 'services/movies-api';
 import s from './TrendingMovies.module.css';
 
@@ -9,11 +11,11 @@ export default function TrendingMovies() {
     useEffect(() => {
         fetchTrendingMovies()
             .then(data => {
-                setMovies(data.results);
+                setMovies(normalizedData(data.results));
             });
     }, [])
 
-    return <ul className={s.gallery}>
+    return <MoviesList>
         <MoviesListItem data={movies} />
-    </ul>
+    </MoviesList>
 }

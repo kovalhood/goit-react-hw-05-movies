@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from 'react-router-dom';
 import Wrapper from "components/Wrapper";
 import Section from "components/Section";
+import Container from "components/Container";
 import AppBar from 'components/AppBar';
 import { ToastContainer } from 'react-toastify';
 // import { toast } from 'react-toastify';
@@ -17,9 +18,8 @@ const Reviews = lazy(()=>import('components/MovieDetailsPage/Reviews' /* webpack
 export default function App() {
     return (
         <Wrapper>
+            <AppBar />
             <Section>
-                <AppBar />
-
                 <Routes>
                     <Route path='/' element={<Suspense fallback={<BeatLoader/>}><HomePage /></Suspense>} />
                     <Route path='/movies' element={<Suspense fallback={<BeatLoader/>}><MoviesPage /></Suspense>}/>

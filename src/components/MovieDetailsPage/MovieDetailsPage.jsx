@@ -3,6 +3,7 @@ import { useParams, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/movies-api';
 import { genresNames } from 'services/genres-names';
 import { Link } from 'react-router-dom';
+import Container from 'components/Container';
 import s from './MovieDetailsPage.module.css';
 
 export default function MovieDetailsPage() {
@@ -25,7 +26,7 @@ export default function MovieDetailsPage() {
             .then(data => {
                 normalizedData(data);
                 setMovie(data);
-                // console.log(data)
+                console.log(data)
             })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movieId])
@@ -61,7 +62,7 @@ export default function MovieDetailsPage() {
         }
     }
 
-    return <>
+    return <Container>
         <button onClick={ goBackHandle }>Go back</button>
         {movie &&
             <div className={s.details}>
@@ -84,13 +85,11 @@ export default function MovieDetailsPage() {
                     </ul>
                 </div>
             </div>}
-        <hr />
         <div>
             <p>Additional information</p>
             <Link to={`/movies/${movieId}/cast`} className={s.link}>Cast</Link>
             <Link to={`/movies/${movieId}/reviews`} className={s.link}>Reviews</Link>
         </div>
-        <hr />
         <Outlet/>
-    </>
+    </Container>
 }

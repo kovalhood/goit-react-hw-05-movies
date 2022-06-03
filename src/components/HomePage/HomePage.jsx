@@ -1,16 +1,11 @@
-import PropTypes from 'prop-types';
-import s from './HomePage.module.css';
 import Container from 'components/Container';
 import Title from './Title';
 import TrendingMovies from './TrendingMovies';
+import s from './HomePage.module.css';
 
 export default function HomePage() {
-    return <div>
+    return <Container>
         <Title text={'Trending today'} />
         <TrendingMovies/>
-    </div>
+    </Container>
 }
-
-// HomePage.propTypes = {
-//     children: PropTypes.node,
-// }
