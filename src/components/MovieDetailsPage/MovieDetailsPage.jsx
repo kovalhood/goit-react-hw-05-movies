@@ -66,7 +66,10 @@ export default function MovieDetailsPage() {
         <button onClick={ goBackHandle }>Go back</button>
         {movie &&
             <div className={s.details}>
-                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.original_title} className={s.image}/>
+                {movie.poster_path
+                    ? <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.original_title} className={s.image}/>
+                    : <img src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg' alt={movie.original_title} className={s.image} />
+                }
                 <div>
                     <h1>{movie.original_title}</h1>
                     <p>{movie.tagline}</p>

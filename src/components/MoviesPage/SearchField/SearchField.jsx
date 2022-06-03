@@ -30,7 +30,7 @@ function SearchField(props) {
             type="text"
             autoComplete="off"
             name="searchQuery"
-            placeholder="Search images and photos"
+            placeholder="Search movie..."
             value={searchQuery}
             onChange={handleSearchQueryChange}
         />

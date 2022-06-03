@@ -5,7 +5,7 @@ import s from './HomePage.module.css';
 
 export default function HomePage() {
     return <Container>
-        <Title text={'Trending today'} />
+        {/* <Title text={'Trending today'} /> */}
         <TrendingMovies/>
     </Container>
 }
