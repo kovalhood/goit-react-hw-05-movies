@@ -1,29 +1,22 @@
 .link{
     color: black;
     font-size: 18px;
+    margin-left: 30px;
+    transition: all 0.2s;
 }
 
 .link:hover{
-    color: red;
+    color: #EF6401;
     text-decoration: none;
 }
 
 .link__active{
-    color: red;
+    color: #EF6401;
     font-size: 18px;
+    margin-left: 30px;
 }
 
 .link__active:hover {
-    color: red;
+    color: #EF6401;
     text-decoration: none;
-}
-
-@media screen and (min-width: 768px) {
-    .link {
-        margin-right: 30px;
-    }
-
-    .link__active {
-        margin-right: 30px;
-    }
 }

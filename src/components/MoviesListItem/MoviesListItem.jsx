@@ -3,10 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import s from './MoviesListItem.module.css';
 
 export default function MoviesListItem({ data }) {
-
-  console.log(data);
-
   const location = useLocation();
+  
     return (
       data.map(({ title, id, poster_path, genres, release_date }) => (
           <li className={s.item} key={id}>
