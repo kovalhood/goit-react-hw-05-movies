@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Outlet, useNavigate } from 'react-router-dom';
+import { useParams, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/movies-api';
 import { genresNames } from 'services/genres-names';
 import { Link } from 'react-router-dom';
@@ -8,28 +8,29 @@ import s from './MovieDetailsPage.module.css';
 export default function MovieDetailsPage() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState('');
-    const [pageIndex, setPageIndex] = useState(null);
+    const [from, setFrom] = useState(null);
 
     const navigate = useNavigate();
-
-    // Setting page index for Go back button
+    const { state } = useLocation();
+    
     useEffect(() => {
-        // Setting page index only if we visited previous pages in current session
-        if (window.history.state.idx > 0) {
-            setPageIndex(window.history.state.idx-1)
+        if (state?.from) {
+            const { pathname } = state.from;
+            setFrom(pathname);
         }
-    },[])
+    },[state?.from])
 
     useEffect(() => {
         fetchMovieDetails(movieId)
             .then(data => {
                 normalizedData(data);
                 setMovie(data);
-                console.log(data)
+                // console.log(data)
             })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movieId])
 
+    // Normalizing genres in data
     function normalizedData(results) {
         createGenres(genresNames, results.genres);
         
@@ -49,18 +50,14 @@ export default function MovieDetailsPage() {
     }
 
     function goBackHandle() {
-        if (pageIndex === null) {
+        if (from === null) {
             //Go back functionality for first load of page from address bar
             navigate('/', { replace: true });
             return;
         }
 
-        if (window.history.state && window.history.state.idx > 0) {
-            // On description page if we click on Cast or Reviews we 
-            // are changing history index, so for proper Go back button functionality 
-            // we have to count difference between current history index 
-            // and history index on page mount
-            navigate(-`${window.history.state.idx-pageIndex}`);
+        else {
+            navigate(from);
         }
     }
 
