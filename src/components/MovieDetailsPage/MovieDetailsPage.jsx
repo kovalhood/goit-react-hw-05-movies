@@ -80,11 +80,13 @@ export default function MovieDetailsPage() {
                     <p>{movie.overview}</p>
                     <h2>Genres</h2>
                     <ul className={s.genres}>
-                        {movie.genres.map(({ id, name }) => (
-                            <li className={s.genres__item} key={id}>
-                                {name}
-                            </li>
-                        ))}
+                        {movie.genres.length > 0
+                            ? movie.genres.map(({ id, name }) => (
+                                <li className={s.genres__item} key={id}>
+                                    {name}
+                                </li>
+                            ))
+                            : <p className={s.genres__item}>Other</p>}
                     </ul>
                 </div>
             </div>}

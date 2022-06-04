@@ -19,11 +19,13 @@ export default function MoviesListItem({ data }) {
               <h3 className={s.movie}>{title}</h3>
               {/* <p className={s.rating}>{ vote_average*10+'%'}</p> */}
               <ul className={s.genres}>
-                    {genres.map(({ id, name }, index) => (
-                        <li className={s.genres__item} key={id}>
-                            { (index ? ', ' : '') + name }
-                        </li>
-                    ))}
+                {genres.length>0 
+                  ? genres.map(({ id, name }, index) => (
+                      <li className={s.genres__item} key={id}>
+                          { (index ? ', ' : '') + name }
+                      </li>
+                    ))
+                  : <p className={s.genres__item}>Other</p>}
                 <p className={s.date}>&#160;| {parseInt(release_date)}</p>
                 </ul>  
             </div>
