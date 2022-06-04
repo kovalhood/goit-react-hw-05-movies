@@ -1,61 +1,51 @@
-.link{
-    color: black;
+.link,
+.link__active{
+    position: relative;
     font-size: 18px;
     margin-left: 30px;
     transition: all 0.2s;
-    position: relative;
-    padding: 23px 0;
+    padding: 22px 0;
 }
 
-.link:hover{
+.link{
+    color: black;
+}
+
+.link__active {
+    color: #EF6401;
+}
+
+.link:hover,
+.link__active:hover{
     color: #EF6401;
     text-decoration: none;
 }
 
-.link__active{
-    position: relative;
-    color: #EF6401;
-    font-size: 18px;
-    margin-left: 30px;
-    padding: 23px 0;
-}
-
-.link__active:hover {
-    color: #EF6401;
-    text-decoration: none;
-}
-
-.link::after {
+.link::after,
+.link__active::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    transform: scaleX(0);
-    background-color: #EF6401;
     height: 3px;
     border: 1px solid #EF6401;
     border-radius: 2px;
+    background-color: #EF6401;
     transform-origin: bottom left;
+}
+
+.link::after{
     transition: transform 0.25s ease-out;
+    transform: scaleX(0);
+}
+
+.link__active::after {
+    opacity: 1;
+    transform: scaleX(1);
 }
 
 .link:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-}
-
-.link__active::after {
-    transform-origin: bottom left;
-    transform: scaleX(1);
-    content: '';
-    position: absolute;
-    opacity: 1;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #EF6401;
-    height: 3px;
-    border: 1px solid #EF6401;
-    border-radius: 2px;
 }
