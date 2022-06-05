@@ -9,16 +9,21 @@
     text-decoration: none;
 }
 
-.logo__text {
+.text {
     display: none;
 }
 
 @media screen and (min-width: 768px) {
-    .logo__text {
+    .text {
         display: inline;
         margin-left: 10px;
         font-size: 26px;
         line-height: 0;
         color: black;
+        transition: all 0.3s;
+    }
+
+    .logo:hover .text{
+        color: #EF6401;
     }
 }
