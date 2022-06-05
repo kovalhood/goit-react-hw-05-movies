@@ -4,11 +4,12 @@ import s from './MoviesListItem.module.css';
 
 export default function MoviesListItem({ data }) {
   const location = useLocation();
+  const query = new URLSearchParams(location.search).get('query') ?? '';
   
     return (
       data.map(({ title, id, poster_path, genres, release_date }) => (
           <li className={s.item} key={id}>
-          <Link to={`/movies/${id}`} state={{ from: location }} className={s.link}>
+          <Link to={`/movies/${id}`} state={{ from: location, search: query }} className={s.link}>
             <div className={s.image_wrapper}>
               {poster_path
                     ? <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} className={s.image}/>
@@ -29,10 +30,8 @@ export default function MoviesListItem({ data }) {
                 <p className={s.date}>&#160;| {parseInt(release_date)}</p>
                 </ul>  
             </div>
-              
-            
-            </Link>
-          </li>
+          </Link>
+        </li>
       ))
     )
 }

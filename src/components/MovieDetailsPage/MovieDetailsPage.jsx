@@ -10,14 +10,17 @@ export default function MovieDetailsPage() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState('');
     const [from, setFrom] = useState(null);
+    const [searchBack, setSearchBack] = useState('');
 
     const navigate = useNavigate();
     const { state } = useLocation();
     
+    // Setting path for Go Back button with search query fom movies page return 
     useEffect(() => {
         if (state?.from) {
-            const { pathname } = state.from;
+            const { pathname, search } = state.from;
             setFrom(pathname);
+            setSearchBack(search);
         }
     },[state?.from])
 
@@ -26,7 +29,7 @@ export default function MovieDetailsPage() {
             .then(data => {
                 normalizedData(data);
                 setMovie(data);
-                console.log(data)
+                // console.log(data)
             })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movieId])
@@ -58,7 +61,7 @@ export default function MovieDetailsPage() {
         }
 
         else {
-            navigate(from);
+            navigate(`${from}${searchBack}`);
         }
     }
 
