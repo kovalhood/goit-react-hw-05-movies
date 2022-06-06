@@ -7,7 +7,7 @@ export default function MoviesListItem({ data }) {
   const query = new URLSearchParams(location.search).get('query') ?? '';
   
     return (
-      data.map(({ title, id, poster_path, genres, release_date }) => (
+      data.map(({ title, id, poster_path, genres, release_date, vote_average }) => (
           <li className={s.item} key={id}>
           <Link to={`/movies/${id}`} state={{ from: location, search: query }} className={s.link}>
             <div className={s.image_wrapper}>
@@ -17,8 +17,7 @@ export default function MoviesListItem({ data }) {
                 }
             </div>
             <div className={s.description}>
-              <h3 className={s.movie}>{title}</h3>
-              {/* <p className={s.rating}>{ vote_average*10+'%'}</p> */}
+              <h3 className={s.title}>{title}</h3>
               <ul className={s.genres}>
                 {genres.length>0 
                   ? genres.map(({ id, name }, index) => (
@@ -27,8 +26,11 @@ export default function MoviesListItem({ data }) {
                       </li>
                     ))
                   : <p className={s.genres__item}>Other</p>}
-                <p className={s.date}>&#160;| {parseInt(release_date)}</p>
-                </ul>  
+              </ul>
+              <p className={s.info}>
+                <span className={s.rating}><i class="fa fa-star-o"></i>&#160;{vote_average}</span>
+                <span className={s.date}>{parseInt(release_date)}</span>
+              </p>
             </div>
           </Link>
         </li>

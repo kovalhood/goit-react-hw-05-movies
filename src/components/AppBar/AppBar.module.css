@@ -15,6 +15,12 @@
     justify-content: space-between;
 }
 
+@media screen and (max-width: 767px) {
+    .navigation {
+        max-width: 530px;
+    }
+}
+
 @media screen and (min-width: 768px) {
     .navigation {
         width: 768px;

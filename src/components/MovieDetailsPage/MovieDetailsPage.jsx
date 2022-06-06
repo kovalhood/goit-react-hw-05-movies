@@ -76,7 +76,7 @@ export default function MovieDetailsPage() {
                 <div>
                     <h1>{movie.original_title}</h1>
                     <p>{movie.tagline}</p>
-                    <p>User Score: {movie.vote_average * 10}%</p>
+                    <p>User Score: {movie.vote_average }</p>
                     <h2>Release</h2>
                     <p>{parseInt(movie.release_date)}</p>
                     <h2>Overview</h2>
