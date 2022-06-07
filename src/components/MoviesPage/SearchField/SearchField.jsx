@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import s from './SearchField.module.css';
 import { toast } from 'react-toastify';
+import sprite from '../../../images/icons.svg'
 
 function SearchField(props) {
     const [searchQuery, setSearchQuery] = useState('');
@@ -36,7 +37,9 @@ function SearchField(props) {
         />
         
         <button type="submit" className={s.button}>
-            <i className="fa fa-search"></i>
+            <svg className={s.icon} width="16" height="16" aria-label="logo">
+                <use href={`${sprite}#search`}></use>
+            </svg>
         </button>
     </form>
 }
