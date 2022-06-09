@@ -28,7 +28,7 @@ export default function MoviesListItem({ data }) {
                   : <p className={s.genres__item}>Other</p>}
               </ul>
               <p className={s.info}>
-                <span className={s.rating}><i class="fa fa-star-o"></i>&#160;{vote_average}</span>
+                <span className={s.rating}><i className="fa fa-star-o"></i>&#160;{vote_average}</span>
                 <span className={s.date}>{parseInt(release_date)}</span>
               </p>
             </div>
