@@ -1,18 +1,19 @@
 .details{
     display: flex;
     flex-direction: column;
-    align-items: center;
     max-width: 500px;
+    margin-bottom: 30px;
 }
 
-.image_wrapper{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+@media screen and (min-width: 768px) {
+    .details {
+        flex-direction: row;
+        align-items: flex-start;
+        max-width: none;
+    }
 }
 
-.go_back{
+.go_back {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -49,6 +50,26 @@
     fill: currentColor;
 }
 
+.image_wrapper{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .image_wrapper {
+        margin-bottom: 0;
+        margin-right: 30px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .image_wrapper {
+        width: 350px;
+    }
+}
+
 .image{
     width: 100%;
     max-width: 500px;
@@ -57,27 +78,84 @@
 
 @media screen and (min-width: 768px) {
     .image {
-        width: 200px;
+        width: 300px;
     }
 }
 
 @media screen and (min-width: 1200px) {
-    /* .item {
-        flex-basis: calc(100% / 4 - 30px);
-    } */
+    .image {
+        width: 350px;
+    }
+}
+
+.title_wrapper{
+    margin-bottom: 10px;
 }
 
 .title{
     font-size: 26px;
+    margin-bottom: 5px;
+}
+
+.tagline{
+    font-style: italic;
+    color: grey;
+}
+
+.info{
+    margin-bottom: 10px;
+    padding: 0;
+    list-style: none;
+}
+
+.info__item{
+    position: relative;
+    overflow: hidden;
+    color: grey;
+}
+
+.info__item:not(:last-child){
+    padding-bottom: 3px;
+}
+
+.info__value,
+.genres {
+    position: absolute;
+    left: 100px;
+    color: black;
 }
 
 .genres{
-    display: flex;
+    display: inline-flex;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.genres__item:not(:last-child){
+.overview{
+    margin-bottom: 10px;
+}
+
+.additional{
+    display: flex;
+}
+.link {
+    font-family: 'Varela Round';
+    display: block;
+    padding: 15px;
     margin-right: 15px;
+    line-height: 0;
+    border-radius: 4px;
+    color: white;
+    background-color: #EF6401;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.2s;
+}
+
+.link:hover {
+    color: #EF6401;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    text-decoration: none;
 }
