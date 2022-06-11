@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCredits } from 'services/movies-api';
@@ -12,7 +11,6 @@ export default function Cast() {
         fetchMovieCredits(movieId)
             .then(data => {
                 setCast(data.cast);
-                console.log(data)
             })
     }, [movieId])
 
