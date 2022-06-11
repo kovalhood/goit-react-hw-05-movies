@@ -21,9 +21,9 @@ export default function App() {
             <AppBar />
             <Section>
                 <Routes>
-                    <Route index element={<Suspense fallback={<BeatLoader/>}><HomePage /></Suspense>} />
-                    <Route path='/movies' element={<Suspense fallback={<BeatLoader/>}><MoviesPage /></Suspense>}/>
-                    <Route path='/movies/:movieId' element={<Suspense fallback={<BeatLoader/>}><MovieDetailsPage /></Suspense>}>
+                    <Route index element={<Container><Suspense fallback={<BeatLoader/>}><HomePage /></Suspense></Container>} />
+                    <Route path='/movies' element={<Container><Suspense fallback={<BeatLoader/>}><MoviesPage /></Suspense></Container>}/>
+                    <Route path='/movies/:movieId' element={<Container><Suspense fallback={<BeatLoader/>}><MovieDetailsPage /></Suspense></Container>}>
                         <Route path='/movies/:movieId/cast' element={<Suspense fallback={<BeatLoader/>}><Cast/></Suspense>}/>
                         <Route path='/movies/:movieId/reviews' element={<Suspense fallback={<BeatLoader/>}><Reviews/></Suspense>} />
                     </Route>

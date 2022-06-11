@@ -87,7 +87,7 @@ export default function MovieDetailsPage() {
         return hoursText + minutesText;
     }
 
-    return <Container>
+    return <>
         
         {movie &&
             <div className={s.details}>
@@ -151,5 +151,5 @@ export default function MovieDetailsPage() {
             </div>}
         
         <Outlet/>
-    </Container>
+    </>
 }

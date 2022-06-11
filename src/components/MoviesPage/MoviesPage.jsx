@@ -32,8 +32,8 @@ export default function MoviesPage() {
         }
     }, [query])
 
-    return <Container>
+    return <>
         <SearchField onSubmit={handleSubmit}/>
         <MoviesSearchList searchQuery={ searchQuery }/>
-    </Container>
+    </>
 }
