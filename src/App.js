@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Routes, Route } from 'react-router-dom';
 import Wrapper from "components/Wrapper";
 import Section from "components/Section";
@@ -6,7 +6,7 @@ import Container from "components/Container";
 import AppBar from 'components/AppBar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import BeatLoader from "react-spinners/BeatLoader";
+import BarLoader from "react-spinners/BarLoader";
 import ScrollToTop from 'react-scroll-up';
 import styles from './services/styles'
 import sprite from './images/icons.svg'
@@ -15,19 +15,22 @@ const HomePage = lazy(() => import('components/HomePage' /* webpackChunkName: "h
 const MoviesPage = lazy(() => import('components/MoviesPage' /* webpackChunkName: "movies-page" */))
 const MovieDetailsPage = lazy(() => import('components/MovieDetailsPage' /* webpackChunkName: "movie-details-page" */))
 const Cast = lazy(() => import('components/MovieDetailsPage/Cast' /* webpackChunkName: "cast" */))
-const Reviews = lazy(()=>import('components/MovieDetailsPage/Reviews' /* webpackChunkName: "reviews" */))
+const Reviews = lazy(() => import('components/MovieDetailsPage/Reviews' /* webpackChunkName: "reviews" */))
 
 export default function App() {
+    // Color for Loader component
+    let [color, setColor] = useState("#EF6401");
+
     return (
         <Wrapper>
             <AppBar />
             <Section>
                 <Routes>
-                    <Route index element={<Container><Suspense fallback={<BeatLoader/>}><HomePage /></Suspense></Container>} />
-                    <Route path='/movies' element={<Container><Suspense fallback={<BeatLoader/>}><MoviesPage /></Suspense></Container>}/>
-                    <Route path='/movies/:movieId' element={<Container><Suspense fallback={<BeatLoader/>}><MovieDetailsPage /></Suspense></Container>}>
-                        <Route path='/movies/:movieId/cast' element={<Suspense fallback={<BeatLoader/>}><Cast/></Suspense>}/>
-                        <Route path='/movies/:movieId/reviews' element={<Suspense fallback={<BeatLoader/>}><Reviews/></Suspense>} />
+                    <Route index element={<Container><Suspense fallback={<BarLoader color={color}/>}><HomePage /></Suspense></Container>} />
+                    <Route path='/movies' element={<Container><Suspense fallback={<BarLoader color={color}/>}><MoviesPage /></Suspense></Container>}/>
+                    <Route path='/movies/:movieId' element={<Container><Suspense fallback={<BarLoader color={color}/>}><MovieDetailsPage /></Suspense></Container>}>
+                        <Route path='/movies/:movieId/cast' element={<Suspense fallback={<BarLoader color={color}/>}><Cast/></Suspense>}/>
+                        <Route path='/movies/:movieId/reviews' element={<Suspense fallback={<BarLoader color={color}/>}><Reviews/></Suspense>} />
                     </Route>
                     <Route path='*'element={<HomePage/>}/>
                 </Routes>

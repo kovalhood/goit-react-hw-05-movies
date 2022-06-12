@@ -89,7 +89,7 @@
 }
 
 .title_wrapper{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .title{
@@ -103,7 +103,7 @@
 }
 
 .info{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding: 0;
     list-style: none;
 }
@@ -134,13 +134,13 @@
 }
 
 .overview{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .additional{
     display: flex;
 }
-.link {
+.additional__button {
     font-family: 'Varela Round';
     display: block;
     padding: 15px;
@@ -153,8 +153,8 @@
     transition: all 0.2s;
 }
 
-.link:hover,
-.link:focus {
+.additional__button:hover,
+.additional__button:focus {
     outline: none;
     color: #EF6401;
     background-color: white;

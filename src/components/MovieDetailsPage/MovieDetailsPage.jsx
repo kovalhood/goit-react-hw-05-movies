@@ -144,8 +144,8 @@ export default function MovieDetailsPage() {
                     <p className={s.overview}>{movie.overview}</p>
 
                     <div className={s.additional}>
-                        <Link to={`/movies/${movieId}/cast`} className={s.link}>Cast</Link>
-                        <Link to={`/movies/${movieId}/reviews`} className={s.link}>Reviews</Link>
+                        <Link to={`/movies/${movieId}/cast`} className={s.additional__button}>Cast</Link>
+                        <Link to={`/movies/${movieId}/reviews`} className={s.additional__button}>Reviews</Link>
                     </div>
                 </div>
             </div>}
