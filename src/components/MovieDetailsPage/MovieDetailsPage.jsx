@@ -32,6 +32,7 @@ export default function MovieDetailsPage() {
             .then(data => {
                 normalizedData(data);
                 setMovie(data);
+                console.log(data);
             })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movieId])

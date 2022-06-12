@@ -1,8 +1,3 @@
-const modalImage = {
-    borderRadius: '5px',
-    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'
-};
-            
 const upButton = {
     position: 'fixed',
     display: 'flex',
@@ -13,17 +8,18 @@ const upButton = {
     bottom: 30,
     right: 30,
     borderRadius: 20,
-    backgroundColor: '#1565c0',
-    color: 'white',
+    backgroundColor: '#fff',
     cursor: 'pointer',
-    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+    boxShadow: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
     transitionDuration: '0.2s',
     transitionTimingFunction: 'linear',
     transitionDelay: '0s',
 };
 
+const upButtonIcon = {
+}
+
 const styles = {
-    modalImage,
     upButton,
 }
 
