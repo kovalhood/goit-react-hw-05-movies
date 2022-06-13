@@ -1,6 +1,5 @@
 import Logo from './Logo';
 import Navigation from 'components/AppBar/Navigation';
-import Container from "components/Container";
 import s from './AppBar.module.css';
 
 export default function AppBar() {

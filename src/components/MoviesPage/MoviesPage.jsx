@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Container from 'components/Container';
 import SearchField from './SearchField';
 import MoviesSearchList from './MoviesSearchList';
 import { toast } from 'react-toastify';

@@ -3,7 +3,6 @@ import { useParams, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/movies-api';
 import { genresNames } from 'services/genres-names';
 import { Link } from 'react-router-dom';
-import Container from 'components/Container';
 import s from './MovieDetailsPage.module.css';
 import sprite from '../../images/icons.svg'
 

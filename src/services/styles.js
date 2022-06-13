@@ -16,9 +16,6 @@ const upButton = {
     transitionDelay: '0s',
 };
 
-const upButtonIcon = {
-}
-
 const styles = {
     upButton,
 }
