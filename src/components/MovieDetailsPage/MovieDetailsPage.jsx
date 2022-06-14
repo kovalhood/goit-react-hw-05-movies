@@ -114,8 +114,8 @@ export default function MovieDetailsPage() {
                     </div>
                     <ul className={s.info}>
                         {movie.vote_average !== 0
-                            ? <li className={s.info__item}>User Score: <span className={s.info__value}>{movie.vote_average}</span></li>
-                            : <li className={s.info__item}>User Score: <span className={s.info__value}>--</span></li>}
+                            ? <li className={s.info__item}>User Score: <span className={s.info__value}><span className={s.star}><i className="fa fa-star-o"></i></span>&#160;{movie.vote_average}</span></li>
+                            : <li className={s.info__item}>User Score: <span className={s.info__value}><span className={s.star}><i className="fa fa-star-o"></i></span>&#160;--</span></li>}
                         {movie.release_date !== ''
                             ? <li className={s.info__item}>Release date: <span className={s.info__value}>{new Date(movie.release_date).toLocaleDateString("en-US", options)}</span></li>
                             : <li className={s.info__item}>Release date: <span className={s.info__value}>--</span></li>}
