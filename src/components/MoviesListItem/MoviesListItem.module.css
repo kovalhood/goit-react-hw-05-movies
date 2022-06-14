@@ -12,8 +12,8 @@
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.item:hover .movie,
-.link:focus .movie  {
+.item:hover .title,
+.link:focus .title  {
     color: #EF6401;
 }
 
