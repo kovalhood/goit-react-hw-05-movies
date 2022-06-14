@@ -48,3 +48,11 @@
     font-size: 12px;
     color: grey;
 }
+
+.read_more_less__more {
+    color: #EE6401;
+}
+
+.read_more_less__less{
+    color: grey;
+}

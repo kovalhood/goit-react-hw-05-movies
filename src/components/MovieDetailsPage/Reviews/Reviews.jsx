@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieReviews } from 'services/movies-api';
+import ReactReadMoreReadLess from "react-read-more-read-less";
 import s from './Reviews.module.css';
 
 export default function Reviews() {
@@ -15,6 +16,8 @@ export default function Reviews() {
         minute: 'numeric',
         second: 'numeric'
     };
+
+    const test = <span class="iconify" data-icon="icomoon-free:arrow-down2"></span>;
 
     useEffect(() => {
         fetchMovieReviews(movieId)
@@ -45,7 +48,15 @@ export default function Reviews() {
                             </div>
                         </div>
                         
-                        <p className={s.content}>{content}</p>
+                        <ReactReadMoreReadLess
+                            charLimit={300}
+                            readMoreText={"Read more ▼"}
+                            readLessText={"Read less ▲"}
+                            readMoreClassName={s.read_more_less__more}
+                            readLessClassName={s.read_more_less__less}
+                        >
+                            {content}
+                        </ReactReadMoreReadLess>
                     </li>
                 ))}
             </ul>)
